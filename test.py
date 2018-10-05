@@ -7,4 +7,4 @@ print(df)
 print(df.loc[0,'In'])
 print(df.loc[0,'Out'])
 
-print(df.loc[0,'Out'] - df.loc[0,'In'])
+print(round((df.loc[1]['Out'] - df.loc[1]['In']).total_seconds() / 3600, 2))

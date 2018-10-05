@@ -28,7 +28,7 @@ def clock_in():
 def clock_out():
     df = pd.read_excel("timesheet.xlsx")
     df.at[0,'Out'] = time_now
-    df.loc[0,'Hour'] = round((df.loc[0]['Out'] - df.loc[1]['In']).total_seconds() / 3600, 2)
+    df.loc[0,'Hour'] = round((df.loc[0]['Out'] - df.loc[0]['In']).total_seconds() / 3600, 2)
     if len(df[df["Date"] == today_date]) >1:
         print('Multiple entry for today')
         print('*'*40)
@@ -50,10 +50,10 @@ if __name__ == "__main__":
     print('*'*40)
     if (type == "1"):
         save(clock_in())
-        print("in!")
+        print("Clocked in!")
     elif (type == "2"):
         save(clock_out())
-        print("out!")
+        print("Clocked out!")
     else:
-        print("Invalid Argument!")
+        print("What are you talking about?")
         print('*'*40)
