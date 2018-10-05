@@ -1,21 +1,19 @@
 import sys
 from datetime import datetime
 from datetime import timedelta
-from calendar import monthrange
 import pandas as pd
 
 time_now = datetime.now()
 today_date = time_now.date()
 time_now
 
-
-def get_last_day_of_month(year, month):
+def last_day_of_month(year, month):
     return datetime.date (year, month+1, 1) - datetime.timedelta (days = 1)
 
 def save(df):
     # writer = pd.ExcelWriter('timesheet.xlsx')
-    # df.to_csv("timesheet.csv", sep=',', index=False, encoding='utf-8')
     # writer.save()
+    df.to_csv("timesheet.csv", sep=',', index=False, encoding='utf-8')
     print(df.head())
 
 def clock_in():
@@ -36,7 +34,7 @@ def clock_out():
     In = read_strptime(df.loc[0]['In'])
 
     df.loc[0,'Hour'] = round((time_now - In).total_seconds() / 3600, 2)
-    if len(df[df["Date"] == today_date]) >1:
+    if len(df[df["Date"] == today_date.strftime("%Y-%m-%d")]) > 1:
         print('Multiple entry for today')
         print('*'*40)
 
