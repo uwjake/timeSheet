@@ -33,7 +33,7 @@ def clock_out():
     # Out = read_strptime(df.loc[0]['Out'])
     In = read_strptime(df.loc[0]['In'])
 
-    df.loc[0,'Hour'] = round((time_now - In).total_seconds() / 3600, 2)
+    df.loc[0,'Hour'] = round((time_now - In).total_seconds() / 3600, 1)
     if len(df[df["Date"] == today_date.strftime("%Y-%m-%d")]) > 1:
         print('Multiple entry for today')
         print('*'*40)
