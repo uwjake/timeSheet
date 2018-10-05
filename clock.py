@@ -52,6 +52,7 @@ if __name__ == "__main__":
             type = "0"
     else:
         type = input('1 for clock in, 2 for clock out: \n')
+        
     print('*'*40)
     if (type == "1"):
         save(clock_in())
