@@ -1,12 +1,12 @@
 # TimeSheet
 
-# Clock in
+### Clock in
 
 ```
 python clock.py in
 ```
 
-# Clock out
+### Clock out
 
 ```
 python clock.py out
