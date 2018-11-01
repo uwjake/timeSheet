@@ -19,7 +19,7 @@ def save(df):
 def clock_in():
     df = pd.read_csv("timesheet.csv")
     print(df)
-    df.loc[-1] = [today_date, time_now, 0.0, 0.0]  # adding a row
+    df.loc[-1] = [today_date, time_now + timedelta(minutes = 5), 0.0, 0.0]  # adding a row
     df.index = df.index + 1  # shifting index
     df.sort_index(inplace=True)
     return df
@@ -34,7 +34,7 @@ def clock_out():
     In = read_strptime(df.loc[0]['In'])
 
 
-    df.loc[0,'Hour'] = (round((time_now - In).total_seconds() / 3600, 1)*10+1)/10
+    df.loc[0,'Hour'] = round((time_now - In).total_seconds() / 3600, 1)
     if len(df[df["Date"] == today_date.strftime("%Y-%m-%d")]) > 1:
         print('Multiple entry for today')
         print('*'*40)
