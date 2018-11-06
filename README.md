@@ -1,5 +1,7 @@
 # TimeSheet
 
+This is a script to record my hours during internship
+
 ### Clock in
 
 ```
