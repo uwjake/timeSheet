@@ -19,7 +19,7 @@ def save(df):
 def clock_in():
     df = pd.read_csv("timesheet.csv")
     print(df)
-    df.loc[-1] = [today_date, time_now + timedelta(minutes = 5), 0.0, 0.0]  # adding a row
+    df.loc[-1] = [today_date, time_now - timedelta(minutes = 6), 0.0, 0.0]  # adding a row
     df.index = df.index + 1  # shifting index
     df.sort_index(inplace=True)
     return df
