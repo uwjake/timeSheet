@@ -11,10 +11,13 @@ def last_day_of_month(year, month):
     return datetime.date (year, month+1, 1) - datetime.timedelta (days = 1)
 
 def save(df):
-    # writer = pd.ExcelWriter('timesheet.xlsx')
-    # writer.save()
+
     df.to_csv("timesheet.csv", sep=',', index=False, encoding='utf-8')
     print(df.head())
+
+    df['Date'] = pd.to_datetime(df['Date'])
+    df1 = df[df['Date'] >= today_date.replace(day=1)]
+    print("Hours Worked in {0}: {1} hours".format(today_date.strftime("%B"), round(df1['Hour'].sum(),1)))
 
 def clock_in():
     df = pd.read_csv("timesheet.csv")
